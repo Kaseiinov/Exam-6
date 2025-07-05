@@ -1,0 +1,135 @@
+[
+  {
+    "fullName": "Иван Иванов",
+    "dateOfBirth": "1980-05-12",
+    "recordingTime": "2025-07-05T09:30",
+    "type": "Первичный",
+    "anamnesis": "Повышенное давление"
+  },
+  {
+    "fullName": "Мария Петрова",
+    "dateOfBirth": "1992-11-20",
+    "recordingTime": "2025-07-05T10:00",
+    "type": "Вторичный",
+    "anamnesis": "Боль в спине"
+  },
+  {
+    "fullName": "Алексей Смирнов",
+    "dateOfBirth": "1975-08-30",
+    "recordingTime": "2025-07-06T10:30",
+    "type": "Первичный",
+    "anamnesis": "Головные боли"
+  },
+  {
+    "fullName": "Елена Кузнецова",
+    "dateOfBirth": "1988-03-14",
+    "recordingTime": "2025-07-07T11:00",
+    "type": "Вторичный",
+    "anamnesis": "Аллергия"
+  },
+  {
+    "fullName": "Дмитрий Орлов",
+    "dateOfBirth": "1999-07-22",
+    "recordingTime": "2025-07-09T11:30",
+    "type": "Первичный",
+    "anamnesis": "Травма ноги"
+  },
+  {
+    "fullName": "Ольга Васильева",
+    "dateOfBirth": "2000-01-05",
+    "recordingTime": "2025-07-10T12:00",
+    "type": "Вторичный",
+    "anamnesis": "Бессонница"
+  },
+  {
+    "fullName": "Сергей Новиков",
+    "dateOfBirth": "1965-09-18",
+    "recordingTime": "2025-07-10T12:30",
+    "type": "Первичный",
+    "anamnesis": "Астма"
+  },
+  {
+    "fullName": "Татьяна Морозова",
+    "dateOfBirth": "1978-12-10",
+    "recordingTime": "2025-07-15T13:00",
+    "type": "Вторичный",
+    "anamnesis": "Диабет"
+  },
+  {
+    "fullName": "Николай Лебедев",
+    "dateOfBirth": "1983-04-27",
+    "recordingTime": "2025-07-14T13:30",
+    "type": "Первичный",
+    "anamnesis": "Проблемы с кожей"
+  },
+  {
+    "fullName": "Екатерина Белова",
+    "dateOfBirth": "1995-06-15",
+    "recordingTime": "2025-07-30T14:00",
+    "type": "Вторичный",
+    "anamnesis": "Грипп"
+  },
+  {
+    "fullName": "Владимир Соколов",
+    "dateOfBirth": "1970-10-02",
+    "recordingTime": "2025-07-20T14:30",
+    "type": "Первичный",
+    "anamnesis": "Боль в суставах"
+  },
+  {
+    "fullName": "Анна Козлова",
+    "dateOfBirth": "1985-02-25",
+    "recordingTime": "2025-07-25T15:00",
+    "type": "Вторичный",
+    "anamnesis": "Высокий холестерин"
+  },
+  {
+    "fullName": "Павел Дмитриев",
+    "dateOfBirth": "1998-11-12",
+    "recordingTime": "2025-07-24T15:30",
+    "type": "Первичный",
+    "anamnesis": "Острый бронхит"
+  },
+  {
+    "fullName": "Ирина Федорова",
+    "dateOfBirth": "1991-05-06",
+    "recordingTime": "2025-07-25T16:00",
+    "type": "Вторичный",
+    "anamnesis": "Проблемы с пищеварением"
+  },
+  {
+    "fullName": "Максим Никитин",
+    "dateOfBirth": "1987-07-29",
+    "recordingTime": "2025-07-24T16:30",
+    "type": "Первичный",
+    "anamnesis": "Усталость"
+  },
+  {
+    "fullName": "Islam Kaseiinov",
+    "dateOfBirth": "2025-07-25",
+    "recordingTime": "2025-07-06T16:50",
+    "type": "Первичный",
+    "anamnesis": "qweqewqweqweqwe"
+  },
+  {
+    "fullName": "Iaseiinov",
+    "dateOfBirth": "2025-07-18",
+    "recordingTime": "2025-07-06T19:56",
+    "type": "Вторичный",
+    "anamnesis": "qweqewqweqweqwe"
+  },
+  {
+    "fullName": "rree",
+    "dateOfBirth": "2025-07-02",
+    "recordingTime": "2025-07-11T07:17",
+    "type": "Первичный",
+    "anamnesis": "rr"
+  },
+  {
+    "fullName": "Islam Kaseiinov",
+    "dateOfBirth": "2025-07-02",
+    "recordingTime": "2025-07-08T18:10",
+    "type": "Первичный",
+    "anamnesis": "qwerqwer"
+  }
+]
