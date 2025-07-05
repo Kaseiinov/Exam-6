@@ -28,13 +28,6 @@
     "anamnesis": "Аллергия"
   },
   {
-    "fullName": "Дмитрий Орлов",
-    "dateOfBirth": "1999-07-22",
-    "recordingTime": "2025-07-09T11:30",
-    "type": "Первичный",
-    "anamnesis": "Травма ноги"
-  },
-  {
     "fullName": "Ольга Васильева",
     "dateOfBirth": "2000-01-05",
     "recordingTime": "2025-07-10T12:00",
@@ -131,5 +124,12 @@
     "recordingTime": "2025-07-08T18:10",
     "type": "Первичный",
     "anamnesis": "qwerqwer"
+  },
+  {
+    "fullName": "qwe",
+    "dateOfBirth": "2025-07-03",
+    "recordingTime": "2025-07-09T18:21",
+    "type": "Первичный",
+    "anamnesis": "qweqwe"
   }
 ]
