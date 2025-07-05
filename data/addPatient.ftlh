@@ -30,6 +30,11 @@
                     </select>
                 </div>
             </div>
+            <div class="mb-3">
+                <#if error??>
+                    <span class="text-danger">${error}</span>
+                </#if>
+            </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
 
