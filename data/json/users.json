@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "firstName": "Marco",
+    "lastName": "Inaros",
+    "email": "marco@test.mail",
+    "password": "qwe"
+  },
+  {
+    "id": 2,
+    "firstName": "Winston",
+    "lastName": "Duarte",
+    "email": "winston@test.mail",
+    "password": "qwe"
+  },
+  {
+    "id": 3,
+    "firstName": "Amos",
+    "lastName": "Burton",
+    "email": "amos@test.mail",
+    "password": "qwe"
+  },
+  {
+    "id": 4,
+    "firstName": "Naomi",
+    "lastName": "Nagata",
+    "email": "naomi@test.mail",
+    "password": "qwe"
+  },
+  {
+    "id": 5,
+    "firstName": "James",
+    "lastName": "Holden",
+    "email": "james@test.mail",
+    "password": "qwe"
+  },
+  {
+    "id": 6,
+    "firstName": "Ислам",
+    "lastName": "Касейинов",
+    "email": "izlax6002@gmail.com",
+    "password": "qwe"
+  },
+  {
+    "id": 7,
+    "firstName": "qwe",
+    "lastName": "qwe",
+    "email": "Kaseiinov@gmail.com",
+    "password": "qwe"
+  },
+  {
+    "id": 8,
+    "firstName": "qwe",
+    "lastName": "qwe",
+    "email": "qwe@qwe.qwe",
+    "password": "qwe"
+  },
+  {
+    "id": 9,
+    "firstName": "qwe",
+    "lastName": "qwe",
+    "email": "test@test.test",
+    "password": "qwe"
+  }
+]
