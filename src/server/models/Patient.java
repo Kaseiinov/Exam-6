@@ -42,6 +42,10 @@ public class Patient {
         return recordingTime.getDayOfMonth();
     }
 
+    public String getFormattedTime() {
+        return recordingTime != null ? recordingTime.toLocalTime().toString() : "";
+    }
+
     public LocalDateTime getRecordingTime() {
         return recordingTime;
     }
