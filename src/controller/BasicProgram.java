@@ -44,6 +44,11 @@ public class BasicProgram extends BasicServer {
             String raw = getBody(exchange);
             Map<String, String> parsed = Utils.parseUrlEncoded(raw, "&");
 
+            if(LocalDate.parse(parsed.get("dateOfBirth")).isAfter(LocalDate.now())) {
+                redirect(exchange, "/patient/add?error=Date of birth cannot be after current date&date=" + params.get("date"));
+                return;
+            }
+
             LocalDateTime dateTime = LocalDateTime.parse(params.get("date"),
                     DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
@@ -74,6 +79,7 @@ public class BasicProgram extends BasicServer {
         Map<String, String> params = Utils.parseUrlEncoded(query, "&");
         Map<String, String> data = new HashMap<>();
         data.put("day", params.get("date"));
+        data.put("error", params.get("error"));
 
         renderTemplate(exchange, "addPatient.ftlh", data);
     }
