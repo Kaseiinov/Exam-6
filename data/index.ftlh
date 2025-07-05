@@ -20,7 +20,20 @@
 
         <#if daysInMonth??>
             <#list daysInMonth as day>
-                <div class="text-center">${day}<span class="patients"></span></div>
+                <div class="calendar_day <#if day == currentDay>today</#if>">
+
+                    <div class="text-center">
+                        <h4>${day}</h4>
+                        <#list patients as patient>
+                            <#if patient.dayInMonth == day>
+                                <span class="patient"><h6>${patient.fullName}</h6></span>
+                            </#if>
+                        </#list>
+                    </div>
+
+                </div>
+
+
             </#list>
         </#if>
     </div>
@@ -31,6 +44,7 @@
             grid-template-columns: repeat(7, 1fr);
             gap: 10px;
         }
+
         .row > div {
             background: #ccc;
             text-align: center;
@@ -43,6 +57,7 @@
             grid-template-columns: repeat(7, 1fr);
             gap: 10px;
         }
+
         .dayOfWeek > div {
             text-align: center;
             padding: 10px;
@@ -52,6 +67,12 @@
         .empty {
             background: none;
             border: none;
+        }
+
+        .row > .today {
+            background: #ffa;
+            font-weight: bold;
+            border: 2px solid #f90;
         }
     </style>
 

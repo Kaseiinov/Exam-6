@@ -9,12 +9,15 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import server.models.Patient;
+import utils.JsonUtils;
 
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.UserPrincipal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -91,7 +94,7 @@ public abstract class BasicServer {
         return HttpServer.create(address, 50);
     }
 
-    private void registerCommonHandlers() {
+    private void registerCommonHandlers() throws FileNotFoundException {
         // самый основной обработчик, который будет определять
         // какие обработчики вызывать в дальнейшем
         server.createContext("/", this::handleIncomingServerRequests);
@@ -121,10 +124,12 @@ public abstract class BasicServer {
 
         Map<String, Object> data = new HashMap<>();
         data.put("daysInMonth", dayList);
-        data.put("firstDayOfWeek", dayOfWeek.getValue()); // Пн = 1, Вск = 7
+        data.put("firstDayOfWeek", dayOfWeek.getValue());
         data.put("currentDay", currentDay);
         data.put("month", month);
         data.put("year", year);
+        JsonUtils utils = new JsonUtils();
+        data.put("patients", utils.readPatients());
         registerGet("/", exchange -> renderTemplate(exchange, "index.ftlh", data));
 
 
