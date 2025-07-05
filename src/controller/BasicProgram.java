@@ -54,13 +54,21 @@ public class BasicProgram extends BasicServer {
             }
 
 
-            if(LocalDate.parse(parsed.get("dateOfBirth")).isAfter(LocalDate.now()) || parsed.get("dateOfBirth") == null) {
+            if(parsed.get("dateOfBirth") == null){
+                redirect(exchange, "/patient/add?error=Date of birth cannot be null&date=" + params.get("date"));
+                return;
+            } else if (LocalDate.parse(parsed.get("dateOfBirth")).isAfter(LocalDate.now())) {
                 redirect(exchange, "/patient/add?error=Date of birth cannot be after current date&date=" + params.get("date"));
                 return;
             }
 
             if(params.get("anamnesis") != null){
                 redirect(exchange, "/patient/add?error=Anamnesis cannot be empty&date=" + params.get("date"));
+                return;
+            }
+
+            if(parsed.get("dateOfBirth") == null || parsed.get("recordingTime") == null || parsed.get("anamnesis") == null) {
+                redirect(exchange, "/patient/add?error=Cannot be null&date=" + params.get("date"));
                 return;
             }
 
