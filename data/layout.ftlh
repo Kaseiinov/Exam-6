@@ -26,21 +26,21 @@
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/books">Books</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="/profile">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="/register">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="/employees">Employees</a>
-                    </li>
+<#--                    <li class="nav-item">-->
+<#--                        <a class="nav-link" href="/books">Books</a>-->
+<#--                    </li>-->
+<#--                    <li class="nav-item">-->
+<#--                        <a class="nav-link " aria-current="page" href="/profile">Profile</a>-->
+<#--                    </li>-->
+<#--                    <li class="nav-item">-->
+<#--                        <a class="nav-link " aria-current="page" href="/login">Login</a>-->
+<#--                    </li>-->
+<#--                    <li class="nav-item">-->
+<#--                        <a class="nav-link " aria-current="page" href="/register">Register</a>-->
+<#--                    </li>-->
+<#--                    <li class="nav-item">-->
+<#--                        <a class="nav-link " aria-current="page" href="/employees">Employees</a>-->
+<#--                    </li>-->
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

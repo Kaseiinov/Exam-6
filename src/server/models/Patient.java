@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,16 @@ public class Patient {
 
     public Patient()  {
 
+    }
+
+    public String getFormattedDateOfBirth() {
+        return dateOfBirth != null ?
+                dateOfBirth.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) : "";
+    }
+
+    public String getFormattedDateTime() {
+        return recordingTime != null ?
+                recordingTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")) : "";
     }
 
     public int getDayInMonth() {
