@@ -119,17 +119,17 @@
     "anamnesis": "qweqewqweqweqwe"
   },
   {
-    "fullName": "rrr",
-    "dateOfBirth": "2025-07-30",
-    "recordingTime": "2025-07-11T20:17",
-    "type": "Вторичный",
-    "anamnesis": "qweqwe"
-  },
-  {
     "fullName": "rree",
     "dateOfBirth": "2025-07-02",
     "recordingTime": "2025-07-11T07:17",
     "type": "Первичный",
     "anamnesis": "rr"
+  },
+  {
+    "fullName": "Islam Kaseiinov",
+    "dateOfBirth": "2025-07-02",
+    "recordingTime": "2025-07-08T18:10",
+    "type": "Первичный",
+    "anamnesis": "qwerqwer"
   }
 ]

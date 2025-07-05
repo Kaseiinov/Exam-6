@@ -9,11 +9,13 @@ import utils.Utils;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 
 public class BasicProgram extends BasicServer {
@@ -44,8 +46,21 @@ public class BasicProgram extends BasicServer {
             String raw = getBody(exchange);
             Map<String, String> parsed = Utils.parseUrlEncoded(raw, "&");
 
-            if(LocalDate.parse(parsed.get("dateOfBirth")).isAfter(LocalDate.now())) {
+
+
+            if(parsed.get("fullName") == null || parsed.get("fullName").isBlank()) {
+                redirect(exchange, "/patient/add?error=User name cannot be empty&date=" + params.get("date"));
+                return;
+            }
+
+
+            if(LocalDate.parse(parsed.get("dateOfBirth")).isAfter(LocalDate.now()) || parsed.get("dateOfBirth") == null) {
                 redirect(exchange, "/patient/add?error=Date of birth cannot be after current date&date=" + params.get("date"));
+                return;
+            }
+
+            if(params.get("anamnesis") != null){
+                redirect(exchange, "/patient/add?error=Anamnesis cannot be empty&date=" + params.get("date"));
                 return;
             }
 
@@ -56,6 +71,7 @@ public class BasicProgram extends BasicServer {
             String[] timeParts = timeStr.split(":");
             int hours = Integer.parseInt(timeParts[0]);
             int minutes = Integer.parseInt(timeParts[1]);
+
 
             Patient patient = new Patient();
             patient.setFullName(parsed.get("fullName"));
