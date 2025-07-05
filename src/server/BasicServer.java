@@ -106,31 +106,34 @@ public abstract class BasicServer {
         // именно этот обработчик отвечает что отображать,
         // когда пользователь запрашивает localhost:9889
 
+        // Сохраняем только статические данные
         LocalDate today = LocalDate.now();
-
         int month = today.getMonthValue();
         int year = today.getYear();
-
         YearMonth currentMonth = YearMonth.of(year, month);
         int daysInMonth = currentMonth.lengthOfMonth();
         int currentDay = today.getDayOfMonth();
-
         LocalDate firstDayOfMonth = currentMonth.atDay(1);
         DayOfWeek dayOfWeek = firstDayOfMonth.getDayOfWeek();
-
         List<Integer> dayList = IntStream.rangeClosed(1, daysInMonth)
                 .boxed()
                 .collect(Collectors.toList());
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("daysInMonth", dayList);
-        data.put("firstDayOfWeek", dayOfWeek.getValue());
-        data.put("currentDay", currentDay);
-        data.put("month", month);
-        data.put("year", year);
-        JsonUtils utils = new JsonUtils();
-        data.put("patients", utils.readPatients());
-        registerGet("/", exchange -> renderTemplate(exchange, "index.ftlh", data));
+        registerGet("/", exchange -> {
+            // Создаем новую мапу для каждого запроса
+            Map<String, Object> freshData = new HashMap<>();
+
+            freshData.put("daysInMonth", dayList);
+            freshData.put("firstDayOfWeek", dayOfWeek.getValue());
+            freshData.put("currentDay", currentDay);
+            freshData.put("month", month);
+            freshData.put("year", year);
+
+            // Всегда читаем свежих пациентов из файла
+            freshData.put("patients", new JsonUtils().readPatients());
+
+            renderTemplate(exchange, "index.ftlh", freshData);
+        });
 
 
         // эти обрабатывают запросы с указанными расширениями

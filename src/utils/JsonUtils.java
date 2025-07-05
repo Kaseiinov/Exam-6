@@ -6,10 +6,7 @@ import com.google.gson.stream.JsonReader;
 import server.models.Patient;
 
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -55,6 +52,30 @@ public class JsonUtils {
         List<Patient> patients = gson.fromJson(reader, listType);
         patientList = patients;
         return patients;
+    }
+
+    public void addPatientToJson(Patient patient) throws IOException {
+        File file = new File(dir + "patients.json");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        List<Patient> patients = new ArrayList<>();
+        if (file.length() > 0) {
+            try (FileReader reader = new FileReader(file)) {
+                Type patientListType = new TypeToken<List<Patient>>(){}.getType();
+                patients = gson.fromJson(reader, patientListType);
+                if (patients == null) {
+                    patients = new ArrayList<>();
+                }
+            }
+        }
+
+        patients.add(patient);
+
+        try (FileWriter writer = new FileWriter(file)) {
+            gson.toJson(patients, writer);
+        }
     }
 
 //    public List<User> readUsers() throws FileNotFoundException {

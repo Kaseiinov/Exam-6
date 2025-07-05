@@ -28,6 +28,8 @@
         </table>
         <#if patients?? && patients?size gt 0>
             <a href="/patient/add?date=${patients[0].recordingTime}">Add new patient</a>
+            <#else>
+                <a href="/patient/add?date=${dateTime}">Add new patient</a>
         </#if>
     </div>
 </@main.layout>

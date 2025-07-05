@@ -10,6 +10,10 @@ import utils.Utils;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class BasicProgram extends BasicServer {
@@ -19,18 +23,54 @@ public class BasicProgram extends BasicServer {
         super(host, port);
         registerGet("/day", this::dayHandler);
         registerGet("/patient/add", this::addPatient);
+        registerPost("/patient/save", this::savePatient);
+    }
+
+    private void savePatient(HttpExchange exchange) throws IOException {
+        try {
+            String query = getQuery(exchange);
+            Map<String, String> params = Utils.parseUrlEncoded(query, "&");
+            String raw = getBody(exchange);
+            Map<String, String> parsed = Utils.parseUrlEncoded(raw, "&");
+
+            LocalDateTime dateTime = LocalDateTime.parse(params.get("date"),
+                    DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+
+            String timeStr = parsed.get("recordingTime");
+            String[] timeParts = timeStr.split(":");
+            int hours = Integer.parseInt(timeParts[0]);
+            int minutes = Integer.parseInt(timeParts[1]);
+
+            Patient patient = new Patient();
+            patient.setFullName(parsed.get("fullName"));
+            patient.setDateOfBirth(LocalDate.parse(parsed.get("dateOfBirth")));
+            patient.setAnamnesis(parsed.get("anamnesis"));
+            patient.setType(parsed.get("type"));
+
+            patient.setRecordingTime(LocalDateTime.of(dateTime.getYear(), dateTime.getMonth(), dateTime.getDayOfMonth(), hours, minutes
+            ));
+
+            utils.addPatientToJson(patient);
+            redirect(exchange, "/day?day=" + dateTime.getDayOfMonth());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void addPatient(HttpExchange exchange) throws IOException {
         String query = getQuery(exchange);
         Map<String, String> params = Utils.parseUrlEncoded(query, "&");
+        Map<String, String> data = new HashMap<>();
+        data.put("day", params.get("date"));
 
-        renderTemplate(exchange, "addPatient.ftlh", null);
+        renderTemplate(exchange, "addPatient.ftlh", data);
     }
 
     private void dayHandler(HttpExchange exchange) throws FileNotFoundException {
         String query = getQuery(exchange);
         Map<String, String> params = Utils.parseUrlEncoded(query, "&");
+        LocalDateTime dateTime = LocalDateTime.of(2025, 07, Integer.parseInt(params.get("day")), 0, 0);
 
         Map<String, Object> data = new HashMap<>();
         List<Patient> patients = utils.readPatients();
@@ -40,6 +80,7 @@ public class BasicProgram extends BasicServer {
                 .sorted(Comparator.comparing(Patient::getRecordingTime))
                 .toList();
         data.put("patients", filteredPatients);
+        data.put("dateTime", dateTime);
         renderTemplate(exchange, "day.ftlh", data);
     }
 }

@@ -1,7 +1,7 @@
 <#import "layout.ftlh" as main>
 <@main.layout>
     <main>
-        <form action="/patient/save" method="post">
+        <form action="/patient/save?date=${day}" method="post">
 
 
             <div class="mb-3">
@@ -14,7 +14,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Recording time</label>
-                <input name="dateOfBirth" type="time" class="form-control" id="exampleInputPassword1">
+                <input name="recordingTime" type="time" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Anamnesis</label>
