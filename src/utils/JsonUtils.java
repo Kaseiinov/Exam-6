@@ -78,6 +78,40 @@ public class JsonUtils {
         }
     }
 
+    public boolean removePatientByName(String fullName) throws IOException {
+        if (fullName == null || fullName.trim().isEmpty()) {
+            return false;
+        }
+
+        File file = new File(dir + "patients.json");
+        if (!file.exists() || file.length() == 0) {
+            return false;
+        }
+
+        List<Patient> patients;
+        try (FileReader reader = new FileReader(file)) {
+            Type patientListType = new TypeToken<List<Patient>>(){}.getType();
+            patients = gson.fromJson(reader, patientListType);
+        }
+
+        if (patients == null || patients.isEmpty()) {
+            return false;
+        }
+
+        int initialSize = patients.size();
+        patients.removeIf(p -> p != null &&
+                p.getFullName() != null &&
+                p.getFullName().equalsIgnoreCase(fullName.trim()));
+
+        if (patients.size() < initialSize) {
+            try (FileWriter writer = new FileWriter(file)) {
+                gson.toJson(patients, writer);
+            }
+            return true;
+        }
+        return false;
+    }
+
 //    public List<User> readUsers() throws FileNotFoundException {
 //        JsonReader reader = new JsonReader(new FileReader(dir + "users.json"));
 //

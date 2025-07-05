@@ -39,6 +39,7 @@ public class Patient {
 
     }
 
+
     public String getFormattedDateOfBirth() {
         return dateOfBirth != null ?
                 dateOfBirth.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) : "";

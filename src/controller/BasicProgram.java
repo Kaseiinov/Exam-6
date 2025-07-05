@@ -24,6 +24,17 @@ public class BasicProgram extends BasicServer {
         registerGet("/day", this::dayHandler);
         registerGet("/patient/add", this::addPatient);
         registerPost("/patient/save", this::savePatient);
+        registerPost("/patient/delete", this::deleteHandler);
+    }
+
+    private void deleteHandler(HttpExchange exchange) throws IOException {
+        String query = getQuery(exchange);
+        Map<String, String> params = Utils.parseUrlEncoded(query, "&");
+
+        String name = params.get("name");
+
+        utils.removePatientByName(name);
+        redirect(exchange, "/day?day=" + params.get("date"));
     }
 
     private void savePatient(HttpExchange exchange) throws IOException {

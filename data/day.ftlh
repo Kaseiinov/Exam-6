@@ -9,6 +9,7 @@
                 <th scope="col">Recording time</th>
                 <th scope="col">Type</th>
                 <th scope="col">Anamnesis</th>
+                <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -20,6 +21,14 @@
                         <td>${patient.formattedTime}</td>
                         <td>${patient.type}</td>
                         <td>${patient.anamnesis}</td>
+
+                        <td>
+                            <form action="/patient/delete?name=${patient.fullName}&date=${patient.dayInMonth}" method="post">
+                                <button class="btn btn-outline-info">
+                                  Delete
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 </#list>
             </#if>
